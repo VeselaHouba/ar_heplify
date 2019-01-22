@@ -1,0 +1,20 @@
+# cp heplify.service /etc/systemd/system/
+# systemctl daemon-reload
+# systemctl start heplify
+# systemctl enable heplify
+# usr/local/sbin/heplify -i ens224 -m SIP -hs 1.1.1.1:9060 -hi 12 -t af_packet -e
+
+[Unit]
+Description=Captures packets from wire and sends them to Homer
+After=network.target
+
+[Service]
+WorkingDirectory={{ heplify_path }}
+ExecStart={{ heplify_path }}/heplify -i {{ heplify_interface }} -t {{ heplify_types }} -m {{ heplify_modes }} -hs {{ heplify_hep_server }} -hi {{ heplify_id }} -e
+ExecStop=/bin/kill ${MAINPID}
+Restart=on-failure
+RestartSec=10s
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
