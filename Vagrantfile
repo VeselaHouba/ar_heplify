@@ -3,14 +3,14 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "debian/jessie64"
-  #config.vm.box = "debian/stretch64"
+  #config.vm.box = "debian/jessie64"
+  config.vm.box = "debian/stretch64"
 
   # heplify
   config.vm.define "heplify-dev" do |heplify|
     heplify.vm.hostname = "heplify-dev"
-    heplify.vm.network :private_network, ip: "10.1.0.224"
-    heplify.vm.network :private_network, ip: "10.1.1.224"
+    heplify.vm.network :private_network, ip: "10.10.0.224"
+    heplify.vm.network :private_network, ip: "10.10.1.224"
   end
 
   config.vm.provider :virtualbox do |vb|
