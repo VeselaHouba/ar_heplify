@@ -1,4 +1,4 @@
-# Ansible role to install HepLify and start
+# Ansible role to install and start HepLify
 
 Ansible role for HepLify (https://github.com/sipcapture/heplify)
 

@@ -7,18 +7,19 @@
 
 - name: Download HepLify
   get_url:
-    url: "https://github.com/sipcapture/heplify/releases/download/{{ heplify_version }}/heplify"
+    url: "{{ heplify_url }}"
     dest: "{{ heplify_path }}/heplify"
     mode: 0740
 
-- template:
+- name: Copy service template
+  template:
     src: heplify.service.j2
     dest: /etc/systemd/system/heplify.service
     owner: root
     group: root
     mode: 0644
 
-- name: reload systemd
+- name: Reload systemd
   systemd:
     daemon_reload: yes
 

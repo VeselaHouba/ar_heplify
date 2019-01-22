@@ -5,3 +5,4 @@ heplify_types: af_packet
 heplify_modes: SIP
 heplify_hep_server: 127.0.0.1:9060
 heplify_id: 001
+heplify_url: "https://github.com/sipcapture/heplify/releases/download/{{ heplify_version }}/heplify"

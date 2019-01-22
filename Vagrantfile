@@ -3,8 +3,8 @@
 
 Vagrant.configure("2") do |config|
 
-  #config.vm.box = "debian/jessie64"
-  config.vm.box = "debian/stretch64"
+  config.vm.box = "debian/jessie64"
+  #config.vm.box = "debian/stretch64"
 
   # heplify
   config.vm.define "heplify-dev" do |heplify|
