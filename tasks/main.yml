@@ -1,15 +1,15 @@
 ---
-- name: Create Folder {{ heplify_path }}
+- name: Create directory {{ heplify_path }}
   file:
     path: "{{ heplify_path }}"
-    recurse: yes
+    recurse: true
     state: directory
 
-- name: Download HepLify
+- name: Download heplify
   get_url:
     url: "{{ heplify_url }}"
     dest: "{{ heplify_path }}/heplify"
-    mode: 0740
+    mode: 0750
 
 - name: Copy service template
   template:
@@ -18,17 +18,14 @@
     owner: root
     group: root
     mode: 0644
+  notify: restart heplify
 
 - name: Reload systemd
   systemd:
-    daemon_reload: yes
+    daemon_reload: true
 
-- name: Enable service heplify, and not touch the state
-  service:
-    name: heplify
-    enabled: yes
-
-- name: Start service heplify, if not started
-  service:
+- name: Enable and start heplify service
+  systemd:
     name: heplify
     state: started
+    enabled: true

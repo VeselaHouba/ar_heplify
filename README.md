@@ -4,7 +4,7 @@ Ansible role for HepLify (https://github.com/sipcapture/heplify)
 
 ## Tasks
 ### Variables:
-- heplify_version: 1.47
+- heplify_version: 1.62
 - heplify_path: /opt/heplify
 - heplify_interface: any
 - heplify_types: af_packet
