@@ -1,18 +1,19 @@
 ---
 galaxy_info:
-  author: Mickael HUBERT
+  author: Mickael HUBERT / Jan Michalek
+  role_name: heplify
   description: Heplify installation
   license: MIT
-  min_ansible_version: 2.0
+  min_ansible_version: 2.8
   platforms:
-  - name: Debian
-    versions:
-    - stretch
-    - jessie
+    - name: Debian
+      versions:
+        - stretch
+        - jessie
   galaxy_tags:
-  - system
-  - voip
-  - homer
-  - debian
+    - system
+    - voip
+    - homer
+    - debian
 
 dependencies: []

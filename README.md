@@ -1,4 +1,6 @@
-# Ansible role to install and start HepLify
+# Ansible Role: HepLify
+
+[![Build Status](https://travis-ci.org/VeselaHouba/ansible-role-heplify.svg?branch=master)](https://travis-ci.org/VeselaHouba/ansible-role-heplify)
 
 Ansible role for HepLify (https://github.com/sipcapture/heplify)
 
@@ -14,7 +16,7 @@ Ansible role for HepLify (https://github.com/sipcapture/heplify)
 
 
 ## Requirements
-- Tested with vagrant box (Debian 8 / 9)
+- Tested with molecule on Debian 8,9,10 and Ubuntu 14.04,16.04,18.04,20.04
 - Ansible 2.7.4
 
 ## Start to play
@@ -23,9 +25,10 @@ service heplify start
 ```
 
 ## Ansible Galaxy
-https://galaxy.ansible.com/mickaelh51/ar_heplify
+https://galaxy.ansible.com/veselahouba/ar_heplify
 ```
-ansible-galaxy install mickaelh51.ar_heplify
+ansible-galaxy install veselahouba.heplify
 ```
 
-## Enhancements
+## Credits
+based on https://github.com/Mickaelh51/ar_heplify
