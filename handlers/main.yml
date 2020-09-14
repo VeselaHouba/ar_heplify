@@ -1,5 +1,5 @@
 ---
 - name: restart heplify
-  systemd:
+  service:
     name: heplify
     state: restarted

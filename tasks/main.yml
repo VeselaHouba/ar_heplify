@@ -4,28 +4,43 @@
     path: "{{ heplify_path }}"
     recurse: true
     state: directory
+    mode: 0755
+    owner: root
+    group: root
 
 - name: Download heplify
   get_url:
     url: "{{ heplify_url }}"
     dest: "{{ heplify_path }}/heplify"
-    mode: 0750
+    mode: 0755
 
-- name: Copy service template
+- block:
+    - name: Copy systemd service template
+      template:
+        src: heplify.service.j2
+        dest: /etc/systemd/system/heplify.service
+        owner: root
+        group: root
+        mode: 0644
+      notify: restart heplify
+
+    - name: Reload systemd
+      systemd:
+        daemon_reload: true
+  when: ansible_service_mgr == 'systemd'
+
+- name: Copy upstart service template
   template:
-    src: heplify.service.j2
-    dest: /etc/systemd/system/heplify.service
+    src: heplify.upstart.j2
+    dest: /etc/init.d/heplify
     owner: root
     group: root
-    mode: 0644
+    mode: 0755
   notify: restart heplify
-
-- name: Reload systemd
-  systemd:
-    daemon_reload: true
+  when: ansible_service_mgr == 'upstart'
 
 - name: Enable and start heplify service
-  systemd:
+  service:
     name: heplify
     state: started
     enabled: true
